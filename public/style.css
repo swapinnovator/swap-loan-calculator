@@ -205,7 +205,7 @@ section {
 	padding: 175px 0 100px;
 	justify-content: center;
 	align-items: center;
-	background-image: url("../images/header-bg.svg");
+	background-image: url("./images/header-bg.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: top;

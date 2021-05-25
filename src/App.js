@@ -10,7 +10,7 @@ import {
 
 function App() {
   return (
-     <Router>
+     <Router basename="/swap-loan-calculator">
        <Switch>
          <Route exact path="/">
            <Home />

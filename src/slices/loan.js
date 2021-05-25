@@ -48,15 +48,16 @@ export function calculateLoan(amount, interestRate, month, type) {
     dispatch(calculateLoanRequest());
 
     let emi = 0, principle = 0, interest = 0, total = 0;
+    amount = Number(amount);
 
     if(amount > 0 && interestRate > 0 && month > 0){
 
       if(type == 'reducing-balance'){
         interestRate = interestRate/ (12 * 100);
-        emi = (amount * interestRate * Math.pow(1 + interestRate, month)) / (Math.pow(1 + interestRate, month) - 1);
+        emi = Number((amount * interestRate * Math.pow(1 + interestRate, month)) / (Math.pow(1 + interestRate, month) - 1));
         emi = emi + 0.000414;
       } else {
-        emi = (amount + (amount * (interestRate/100) * month/12) / month);
+        emi = Number(amount + (amount * (interestRate/100) * month/12))/month;
       }
 
 

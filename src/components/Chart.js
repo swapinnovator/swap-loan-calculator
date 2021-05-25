@@ -30,8 +30,7 @@ function Chart () {
     let principle = (loan.principle > 0 && loan.total > 0 && loan.interest > 0) ? loan.principle / loan.total * 100 :100;
     let interest = (loan.principle > 0 && loan.total > 0 && loan.interest > 0) ? loan.interest / loan.total * 100 : 0;
 
-    console.log(principle);
-    let seriesVal = [interest, principle];
+    let seriesVal = [Math.round(interest), Math.round(principle)];
     setSeries(seriesVal);
  }, [loan]);
 

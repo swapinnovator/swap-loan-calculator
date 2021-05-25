@@ -1,6 +1,6 @@
 {
   "name": "swaploancalculator",
-  "homepage":"https://dakshim.github.io/swap-loan-calculator/",
+  "homepage":"https://dakshim.github.io/swap-loan-calculator",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
