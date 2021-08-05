@@ -2,9 +2,12 @@ import React, { useState, useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {calculateLoan, loanSelector} from '../slices/loan'
 import Chart from './Chart';
+import currencies from '../helpers/Currencies';
 
 function Calculator() {
     const [month, setMonth] = useState(0);
+    const [currency, setCurrency] = useState('$');
+    const [showCurrencyList, setShowCurrencyList] = useState(false);
     const [amount, setAmount] = useState(0);
     const [interestRate, setInterestRate] = useState(0);
     const [type, setType] = useState('flat-rate');
@@ -15,6 +18,15 @@ function Calculator() {
       setMonth(e.target.value);
       dispatch(calculateLoan(amount, interestRate, e.target.value, type));
     };
+
+    const handleCurrencyList = () => {
+      setShowCurrencyList(!showCurrencyList);
+    }
+
+    const handleCurrencyChange = (val) => {
+        localStorage.setItem('slc-currency', val);
+        setCurrency(val);
+    }
 
     const handleAmountChange = (e) => {
       setAmount(e.target.value);
@@ -30,6 +42,12 @@ function Calculator() {
       setType(typeVal);
       dispatch(calculateLoan(amount, interestRate, month, typeVal));
     }
+
+
+    useEffect(() => {
+      let currency = localStorage.getItem('slc-currency') ? localStorage.getItem('slc-currency') : '$';
+      setCurrency(currency);
+    }, [])
 
   return (
     <div id="calculator" className="calculator-section">
@@ -68,10 +86,17 @@ function Calculator() {
               <div className="col-sm-6">
                 <form className="form-calculator" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
                   <div className="form-group" data-aos="fade-right"  data-aos-duration="800">
-                    <label for="amount">Loan Amount:</label>
+                    <label htmlFor="amount">Loan Amount:</label>
                     <div className="input-group mb-2">
                       <div className="input-group-prepend">
-                        <div className="input-group-text">$</div>
+                        <div className="input-group-text" onClick= {handleCurrencyList}>{currency}</div>
+                        {showCurrencyList ?
+                          <div className="input-currency-selector">
+                            <ul>
+                              {currencies.length > 0 ? currencies.map((item, index) => <li key={index} onClick={() => {handleCurrencyChange(item.symbol)}}> {item.abbrevation} - {item.country}</li>) : ''}
+                            </ul>
+                          </div> : ''}
+
                       </div>
                       <input type="text" className="form-control" id="amount" value={amount} onChange={handleAmountChange}/>
                     </div>
@@ -81,7 +106,7 @@ function Calculator() {
                   </div>
 
                   <div className="form-group" data-aos="fade-right"  data-aos-duration="900" data-aos-delay="500">
-                    <label for="amount">Interest Rate :</label>
+                    <label htmlFor="amount">Interest Rate :</label>
                     <div className="input-group mb-2">
                       <div className="input-group-prepend">
                         <div className="input-group-text">%</div>
@@ -89,12 +114,12 @@ function Calculator() {
                       <input type="text" className="form-control" id="interest" value={interestRate} onChange={handleInterestRateChange} />
                     </div>
                     <div id="slider-interest" className="emi-input">
-                      <input type="range"  min="0" max="40" value={interestRate}  onChange={handleInterestRateChange} />
+                      <input type="range" min="0" max="40" value={interestRate}  onChange={handleInterestRateChange} />
                     </div>
                   </div>
 
                   <div className="form-group" data-aos="fade-right"  data-aos-duration="1000" data-aos-delay="800">
-                    <label for="amount">Loan Tenure :</label>
+                    <label htmlFor="amount">Loan Tenure :</label>
                     <div className="input-group loan-group mb-2">
                       <div className="input-group-prepend">
                         <div className="input-group-text">Months</div>
@@ -115,15 +140,15 @@ function Calculator() {
                   </div>
                   <div className="emi-details-box" data-aos="fade-right"  data-aos-duration="1100" data-aos-delay="1100">
                     <p>Loan EMI</p>
-                    <h5><span>$</span>{loan.emi.toFixed(2)}</h5>
+                    <h5><span>{currency}</span>{loan.emi.toFixed(2)}</h5>
                   </div>
                   <div className="emi-details-box" data-aos="fade-right"  data-aos-duration="1300" data-aos-delay="1500">
                     <p>Total Interest Payable</p>
-                    <h5><span>$</span>{loan.interest.toFixed(2)}</h5>
+                    <h5><span>{currency}</span>{loan.interest.toFixed(2)}</h5>
                   </div>
                   <div className="emi-details-box no-bottom-border" data-aos="fade-right"  data-aos-duration="1500" data-aos-delay="1900">
                     <p>Total Payment</p>
-                    <h5><span>$</span>{loan.total.toFixed(2)}</h5>
+                    <h5><span>{currency}</span>{loan.total.toFixed(2)}</h5>
                   </div>
                 </div>
               </div>
@@ -131,12 +156,12 @@ function Calculator() {
                 <div className="pie-chart" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2500">
                   <div className="chartMain" data-aos="fade-right"  data-aos-duration="1700" data-aos-delay="3000">
                     <Chart/>
-                  </div>  
+                  </div>
                 </div>
               </div>
             </div>
-      </div> 
-       </div>  
+      </div>
+       </div>
   </div>
   );
 }
