@@ -1,5 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
+
+
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,7 +13,7 @@ import {
 
 function App() {
   return (
-     <Router basename="/swap-loan-calculator">
+     <Router basename="/loan-calculator">
        <Switch>
          <Route exact path="/">
            <Home />

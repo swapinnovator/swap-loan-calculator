@@ -10,8 +10,24 @@ function Chart () {
   const {loan, loading, hasErrors} = useSelector(loanSelector);
   const options = {
     legend: {
-      position: 'bottom'
+      position: 'bottom',
+      markers: {
+        fillColors: ['#cf9700', '#ac10f8'],
+      }
     },
+    fill: {
+      colors: ['#cf9700', '#ac10f8']
+    },
+    dataLabels: {
+      style: {
+        colors: ['#fff', '#fff', '#fff']
+      }
+    },
+    markers: {
+      colors: ['#fff', '#fff', 'red']
+   },
+   
+    
     plotOptions: {
           pie: {
             donut: {
@@ -22,13 +38,14 @@ function Chart () {
           }
         },
     labels: ['Interest', 'Principle']
+
   };
 
   const [series, setSeries] = useState([ 0,100 ]);
   useEffect(() => {
 
-    let principle = (loan.principle > 0 && loan.total > 0 && loan.interest > 0) ? loan.principle / loan.total * 100 :100;
-    let interest = (loan.principle > 0 && loan.total > 0 && loan.interest > 0) ? loan.interest / loan.total * 100 : 0;
+    let principle = (loan.principle > 0 && loan.total > 0 && loan.interest > 0) ? loan.principle / loan.total * 100 :90;
+    let interest = (loan.principle > 0 && loan.total > 0 && loan.interest > 0) ? loan.interest / loan.total * 100 : 10;
 
     let seriesVal = [Math.round(interest), Math.round(principle)];
     setSeries(seriesVal);
