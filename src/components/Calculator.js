@@ -26,6 +26,7 @@ function Calculator() {
     const handleCurrencyChange = (val) => {
         localStorage.setItem('slc-currency', val);
         setCurrency(val);
+        setShowCurrencyList(false);
     }
 
     const handleAmountChange = (e) => {
@@ -53,12 +54,20 @@ function Calculator() {
     <div id="calculator" className="calculator-section">
     <div className="calculator-box">
       <div className="navTabs">
-          <ul className="nav nav-pills">
-            <li className="nav-item" data-aos="fade-right" data-aos-duration="1000">
-              <a className={(type == 'flat-rate') ? "nav-link active" : "nav-link" } onClick={() => handleTypeChange('flat-rate')}>Flat Rate <b>Loan Calculator</b></a>
+          <ul className="nav nav-pills" data-aos="fade-right" data-aos-duration="1000">
+            {/* <li className="nav-item" data-aos="fade-right" data-aos-duration="1000">
+              <a className={(type == 'flat-rate') ? "nav-link active" : "nav-link" } onClick={() => handleTypeChange('flat-rate')}><span>Flat Rate <b>Loan Calculator</b></span></a>
             </li>
             <li className="nav-item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="500">
-              <a className={(type == 'reducing-balance') ? "nav-link active" : "nav-link" } onClick={() => handleTypeChange('reducing-balance')} >Reducing Balance <b>Loan Calculator</b></a>
+              <a className={(type == 'reducing-balance') ? "nav-link active" : "nav-link" } onClick={() => handleTypeChange('reducing-balance')} ><span>Reducing Balance <b>Loan Calculator</b></span></a>
+            </li> */}
+
+            
+            <li className={(type == 'flat-rate') ? "nav-item active" : "nav-item" } >
+              <a className="nav-link" onClick={() => handleTypeChange('flat-rate')}><span>Flat Rate <b>Loan Calculator</b></span></a>
+            </li>
+            <li className={(type == 'reducing-balance') ? "nav-item active" : "nav-item" }>
+              <a className="nav-link" onClick={() => handleTypeChange('reducing-balance')} ><span>Reducing Balance <b>Loan Calculator</b></span></a>
             </li>
           </ul>
       </div>
@@ -85,9 +94,9 @@ function Calculator() {
             <div className="row">
               <div className="col-sm-6">
                 <form className="form-calculator" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                  <div className="form-group" data-aos="fade-right"  data-aos-duration="800">
+                  <div className="form-group currency-group" data-aos="fade-right"  data-aos-duration="800">
                     <label htmlFor="amount">Loan Amount:</label>
-                    <div className="input-group mb-2">
+                    <div className="input-group">
                       <div className="input-group-prepend">
                         <div className="input-group-text" onClick= {handleCurrencyList}>{currency}</div>
                         {showCurrencyList ?
@@ -107,7 +116,7 @@ function Calculator() {
 
                   <div className="form-group" data-aos="fade-right"  data-aos-duration="900" data-aos-delay="500">
                     <label htmlFor="amount">Interest Rate :</label>
-                    <div className="input-group mb-2">
+                    <div className="input-group">
                       <div className="input-group-prepend">
                         <div className="input-group-text">%</div>
                       </div>

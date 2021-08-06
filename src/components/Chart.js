@@ -8,6 +8,7 @@ import {calculateLoan, loanSelector} from '../slices/loan';
 function Chart () {
 
   const {loan, loading, hasErrors} = useSelector(loanSelector);
+  
   const options = {
     legend: {
       position: 'bottom',
@@ -26,6 +27,10 @@ function Chart () {
     markers: {
       colors: ['#fff', '#fff', 'red']
    },
+   chart: {
+    width: 380,
+    type: 'donut',
+  },
 
 
     plotOptions: {
