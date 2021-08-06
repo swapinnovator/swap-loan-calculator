@@ -73,7 +73,7 @@ body .container {
 	z-index: 1;
 }
 .calculator-row{
-    padding: 65px 0px;
+    padding: 3% 0px;
     justify-content: space-between;
 }
 .row.calculator-row .left-calc-part {
@@ -91,7 +91,7 @@ body .container {
     background-image: linear-gradient(
 60deg
 , #2f2f2f 0%, #4e4e4e 100%);
-    padding: 50px 70px;
+    padding: 45px 55px 35px 55px;
 }
 
 p.header-subtitle {
@@ -136,7 +136,7 @@ a.learn-more-btn.btn-invert:hover {
     color: #2eb638;
 }
 .navTabs {
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 .calculator-box .nav.nav-pills {
     background-image: linear-gradient( 
@@ -150,25 +150,132 @@ a.learn-more-btn.btn-invert:hover {
     border-radius: 30px;
     background-color: transparent;
     text-align: left;
-    padding: 10px 31px;
+    padding: 12px 31px;
     height: 100%;
     font-size: 12px;
-    line-height: 19px;
+    line-height: 18px;
     color: #ffffff;
     font-weight: 400;
     text-transform: uppercase;
     cursor: pointer;
+    text-align: center;
+}
+.calculator-box .nav-pills .nav-link span{
+    text-align: left;
+    display: inline-block;
+}
+.calculator-box .nav-pills .nav-link span b {
+    display: block;
 }
 .calculator-box .nav.nav-pills li {
     width: 50%;
+    overflow: hidden;
+    border-radius: 30px;
 }
-.calculator-box .nav-pills .nav-link.active, .calculator-box .nav-pills .show>.nav-link {
+.calculator-box .nav-pills .nav-item.active::before  {
+    content: "";
+    position: absolute;
     color: #fff;
     background-color: #2eb638;
     filter: drop-shadow(0 0 36.5px rgba(0,0,0,0.22));
-    background-image: linear-gradient(
-101deg
-, #00930a 0%, #03bb11 100%)
+    background-image: linear-gradient(101deg, #00930a 0%, #03bb11 100%);
+    height: 100%;
+    width: 50%;
+    z-index: -1;
+    border-radius: 30px;
+}
+
+.calculator-box .nav-pills .nav-item.active::before 
+{
+    -webkit-animation: rightToLeft 0.5s ease;
+    -moz-animation: rightToLeft 0.5s ease;
+    -o-animation: rightToLeft 0.5s ease;
+    animation: rightToLeft 0.5s ease;
+    animation-fill-mode: forwards;
+}
+.calculator-box .nav-pills .nav-item:last-child.active::before 
+{
+    -webkit-animation: leftToRight 0.5s ease;
+    -moz-animation: leftToRight 0.5s ease;
+    -o-animation: leftToRight 0.5s ease;
+    animation: leftToRight 0.5s ease;
+    animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes leftToRight {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 50%;
+    }
+}
+
+@-moz-keyframes leftToRight {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 50%;
+    }
+}
+
+@-o-keyframes leftToRight {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 50%;
+    }
+}
+
+@keyframes leftToRight {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: 50%;
+    }
+}
+
+/* --------------------------------- */
+
+
+
+@-webkit-keyframes rightToLeft {
+    0% {
+        left: 50%;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@-moz-keyframes rightToLeft {
+    0% {
+        left: 50%;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@-o-keyframes rightToLeft {
+    0% {
+        left: 50%;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes rightToLeft {
+    0% {
+        left: 50%;
+    }
+    100% {
+        left: 0;
+    }
 }
 
 
@@ -194,22 +301,25 @@ a.learn-more-btn.btn-invert:hover {
     color: #2eb638;
     font-weight: 500;
     text-transform: uppercase;
-    margin: 0px 0px 14px;
+    margin: 0px 0px 6px;
 }
 .emi-details {
     padding-left: 20px;
 }
 .form-calculator .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 17px;
 }
 .form-calculator .form-group:last-child {
     margin-bottom: 0px;
 }
 .emi-details-box {
-    margin: 0px 0px 50px;
+    margin: 0px 0px 62px;
+}
+.emi-details-box:last-child{
+    margin-bottom: 0;
 }
 form.form-calculator {
-    margin-top: 36px;
+    margin-top: 26px;
 }
 .form-calculator label,.emi-details-box p {
     font-size: 12px;
@@ -232,8 +342,7 @@ form.form-calculator {
     margin: 12px 0px 10px;
 }
 .form-calculator input[type="range"] {
-       width: 85%;
-    max-width: 244px;
+    width: 85%;
     border-radius: 12px;
     background-color: #ffffff33;
     border: 0px;
@@ -299,6 +408,17 @@ input[type="range"]::-moz-range-thumb {
     padding: 8px 10px;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    position: relative;
+}
+.form-calculator .currency-group .input-group .input-group-text::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 6px solid white;
+    margin-left: 7px;
 }
 .form-calculator .input-group.loan-group .input-group-text {
     font-size: 10px;
@@ -316,9 +436,9 @@ path#SvgjsPath1014 {
     font-size: 12px;
 }
 .apexcharts-legend {
-    right: 0px !important;
+    right: -5px !important;
     left: auto !important;
-    top: 50% !important;
+    top: 41% !important;
     bottom: auto !important;
     transform: translateY(-50%);
     flex-direction: column;
@@ -345,9 +465,56 @@ span.apexcharts-legend-text {
     outline: 0;
     box-shadow: none;
 }
+.input-currency-selector {
+    position: absolute;
+    background: #02b310;
+    z-index: 999999;
+    left: 0;
+    right: 0;
+    border-radius: 10px;
+    top: 106%;
+}
+.currency-group {
+    position: relative;
+    z-index: 3;
+}
 
+.input-currency-selector li {
+    list-style: none;
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-bottom: 1px solid #ffffff1c;
+    cursor: pointer;
+}
 
+.input-currency-selector ul {
+    margin: 0;
+    padding: 6px 0;
+}
 
+.input-currency-selector li:last-child {
+    border-bottom: 0;
+}
+
+.chartMain {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.pie-chart {
+    position: relative;
+    padding-top: 56%;
+    overflow: hidden;
+}
+.form-calculator .form-group .input-group {
+    margin-bottom: 2px;
+}
 @media(max-width: 1199px){
 .row.calculator-row .calculator-section {
     width: 675px;
@@ -417,6 +584,12 @@ form.form-calculator {
 .apexcharts-legend {
     top: 83% !important;
     left: 0 !important;
+}
+.pie-chart {
+    padding-top: 70%;
+}
+.chartMain{
+    width: 100%;
 }
 }
 @media(max-width: 480px){
