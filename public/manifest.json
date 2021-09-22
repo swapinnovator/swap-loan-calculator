@@ -1,6 +1,6 @@
 {
   "short_name": "Swap Loan Calculator",
-  "name": "Get your EMI calculated using Swap's Loan Calculator",
+  "name": "Swap Loan Calculator",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +18,15 @@
       "sizes": "512x512"
     }
   ],
+    "shortcuts" : [
+    {
+      "name": "Swap Loan Calculator",
+      "url": "/",
+      "description": "Get your EMI calculated"
+    }
+  ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#00970b",
   "background_color": "#ffffff"
 }

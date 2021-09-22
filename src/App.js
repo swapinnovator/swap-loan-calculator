@@ -1,8 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
 
-
-
 import {
   BrowserRouter as Router,
   Switch,
