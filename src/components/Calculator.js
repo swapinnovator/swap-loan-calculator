@@ -62,7 +62,7 @@ function Calculator() {
               <a className={(type == 'reducing-balance') ? "nav-link active" : "nav-link" } onClick={() => handleTypeChange('reducing-balance')} ><span>Reducing Balance <b>Loan Calculator</b></span></a>
             </li> */}
 
-            
+
             <li className={(type == 'flat-rate') ? "nav-item active" : "nav-item" } >
               <a className="nav-link" onClick={() => handleTypeChange('flat-rate')}><span>Flat Rate <b>Loan Calculator</b></span></a>
             </li>
@@ -93,7 +93,7 @@ function Calculator() {
       <div className="calculator_sec">
             <div className="row">
               <div className="col-sm-6">
-                <form className="form-calculator" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                <form className="form-calculator" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
                   <div className="form-group currency-group" data-aos="fade-right"  data-aos-duration="800">
                     <label htmlFor="amount">Loan Amount:</label>
                     <div className="input-group">
@@ -114,7 +114,7 @@ function Calculator() {
                     </div>
                   </div>
 
-                  <div className="form-group" data-aos="fade-right"  data-aos-duration="900" data-aos-delay="500">
+                  <div className="form-group" data-aos="fade-right"  data-aos-duration="900" data-aos-delay="200">
                     <label htmlFor="amount">Interest Rate :</label>
                     <div className="input-group">
                       <div className="input-group-prepend">
@@ -127,7 +127,7 @@ function Calculator() {
                     </div>
                   </div>
 
-                  <div className="form-group" data-aos="fade-right"  data-aos-duration="1000" data-aos-delay="800">
+                  <div className="form-group" data-aos="fade-right"  data-aos-duration="1000" data-aos-delay="200">
                     <label htmlFor="amount">Loan Tenure :</label>
                     <div className="input-group loan-group mb-2">
                       <div className="input-group-prepend">
@@ -143,27 +143,27 @@ function Calculator() {
                 </form>
               </div>
               <div className="col-sm-6">
-                <div className="emi-details" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="1500">
-                  <div className="emi-details-head" data-aos="fade-right"  data-aos-duration="900" data-aos-delay="500">
+                <div className="emi-details" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                  <div className="emi-details-head" data-aos="fade-right"  data-aos-duration="900" data-aos-delay="200">
                     <h3>Your EMI Details</h3>
                   </div>
-                  <div className="emi-details-box" data-aos="fade-right"  data-aos-duration="1100" data-aos-delay="1100">
+                  <div className="emi-details-box" data-aos="fade-right"  data-aos-duration="1100" data-aos-delay="200">
                     <p>Loan EMI</p>
                     <h5><span>{currency}</span>{loan.emi.toFixed(2)}</h5>
                   </div>
-                  <div className="emi-details-box" data-aos="fade-right"  data-aos-duration="1300" data-aos-delay="1500">
+                  <div className="emi-details-box" data-aos="fade-right"  data-aos-duration="1300" data-aos-delay="200">
                     <p>Total Interest Payable</p>
                     <h5><span>{currency}</span>{loan.interest.toFixed(2)}</h5>
                   </div>
-                  <div className="emi-details-box no-bottom-border" data-aos="fade-right"  data-aos-duration="1500" data-aos-delay="1900">
+                  <div className="emi-details-box no-bottom-border" data-aos="fade-right"  data-aos-duration="1500" data-aos-delay="200">
                     <p>Total Payment</p>
                     <h5><span>{currency}</span>{loan.total.toFixed(2)}</h5>
                   </div>
                 </div>
               </div>
               <div className="col-lg-12 chart-section">
-                <div className="pie-chart" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="2500">
-                  <div className="chartMain" data-aos="fade-right"  data-aos-duration="1700" data-aos-delay="3000">
+                <div className="pie-chart" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="0">
+                  <div className="chartMain" data-aos="fade-up"  data-aos-duration="1000" data-aos-delay="0">
                     <Chart/>
                   </div>
                 </div>
